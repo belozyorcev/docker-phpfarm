@@ -7,6 +7,9 @@ FROM philcryer/min-wheezy:latest
 
 MAINTAINER Andreas Gohr, andi@splitbrain.org
 
+# get sources
+COPY source.list /etc/apt/sources.list
+
 # add some build tools
 RUN apt-get update && \
     apt-get install -y \
@@ -31,6 +34,8 @@ RUN apt-get update && \
     libt1-dev \
     libltdl-dev \
     libmhash-dev
+
+RUN apt-get build-dep -y php5
 
 # install and run the phpfarm script
 RUN git clone https://github.com/cweiske/phpfarm.git phpfarm
