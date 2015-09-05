@@ -37,6 +37,8 @@ RUN apt-get update && \
 
 RUN apt-get build-dep -y php5
 
+RUN apt-get install -y nano
+
 # install and run the phpfarm script
 RUN git clone https://github.com/cweiske/phpfarm.git phpfarm
 
